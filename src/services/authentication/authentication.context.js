@@ -32,14 +32,8 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
-  const onLogout = () => {
-    setUser(null);
-    firebase.auth().signOut();
-  };
-
   const onRegister = (email, password, repeatedPassword) => {
     setIsLoading(true);
-
     if (password !== repeatedPassword) {
       setError("Error: Passwords do not match");
       return;
@@ -54,6 +48,16 @@ export const AuthenticationContextProvider = ({ children }) => {
       .catch((e) => {
         setIsLoading(false);
         setError(e.toString());
+      });
+  };
+
+  const onLogout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        setUser(null);
+        setError(null);
       });
   };
 
