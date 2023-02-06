@@ -14,6 +14,18 @@ import { Navigation } from "./src/infrastructure/navigation";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
+import * as firebase from "firebase";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD7SWQA2EjLXdsTz9XUXiZCpYYCuZGaAOc",
+  authDomain: "mealstogo-a976d.firebaseapp.com",
+  projectId: "mealstogo-a976d",
+  storageBucket: "mealstogo-a976d.appspot.com",
+  messagingSenderId: "842848308623",
+  appId: "1:842848308623:web:38d87201ecb07e5d128ffa",
+};
+
+firebase.initializeApp(firebaseConfig);
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
